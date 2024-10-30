@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Hero adventure</title>
+</head>
+
+<body>
+    <h1>Hero adventure</h1>
+    <div class="intro">
+        <p>Então você é o herói escolhido para enfrentar o temível dragão que dominou o castelo, quem é você?</p>
+        <div>
+            <button id="hero1" class="heroBtn" name="warrior">Sou Garrosh, o Guerreiro</button>
+            <button id="hero2" class="heroBtn" name="mage">Sou Gandalf, o Mago</button>
+            <button id="hero3" class="heroBtn" name="monk">Sou Poo, o Monge</button>
+            <button id="hero4" class="heroBtn" name="ninja">Sou Naruto, o Ninja</button>
+        </div>
+    </div>
+    <div class="game hidden">
+        <div class="charWrapper">
+            <div class="hero">
+                <p class="heroName"></p>
+                <p><strong>HP: </strong><span class="heroHp"></span></p>
+            </div>
+            <div class="dragon">
+                <p class="dragonName"></p>
+                <p><strong>HP: </strong><span class="dragonHp"></span></p>
+            </div>
+        </div>
+        <div class="attackMsg"></div>
+        <button class="attackBtn">Atacar</button>
+    </div>
+
+    <div class="endGame">
+        <h2></h2>
+        <p></p>
+    </div>
+
+    <script src="js/Character.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
