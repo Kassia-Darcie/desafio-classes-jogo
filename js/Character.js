@@ -12,22 +12,22 @@ class Character {
 		let damage;
 		switch (this.characterClass) {
 			case "guerreiro":
-				damage = Math.random() * 10;
+				damage = Character.getRandom(5, 10);
 				break;
 			case "mago":
-				damage = Math.random() * 20;
+				damage = Character.getRandom(1, 20);
 				damage += 15;
 				break;
 			case "monge":
-				damage = Math.random() * 10;
-				damage *= 2;
+				damage = Character.getRandom(1, 10);
+				damage *= Math.floor(Character.getRandom(1, 2));
 				break;
 			case "ninja":
-				damage = Math.random() * 8;
-				damage *= 5;
+				damage = Character.getRandom(3, 5);
+				damage *= Math.floor(Character.getRandom(2, 5));
 				break;
 			default:
-				damage = Math.random() * 15;
+				damage = Character.getRandom(1, 15);
 		}
 
 		let message = `o ${this.characterClass} atacou ${target.name} usando ${
@@ -35,6 +35,11 @@ class Character {
 		}, causando ${damage.toFixed(1)} de dano`;
 		target.hp -= damage;
 		return message;
+	}
+
+	static getRandom(min, max) {
+		let result = Math.random() * (max - min + 1) + min;
+		return result;
 	}
 }
 class Hero extends Character {
