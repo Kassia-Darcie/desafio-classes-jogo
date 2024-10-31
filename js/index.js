@@ -41,36 +41,39 @@ function setHero(heroClass) {
 		case "ninja":
 			hero = new Hero("Naruto", 15, "ninja", "shurikens");
 			break;
-
-		default:
-			break;
 	}
 }
 
 function handleAttack() {
-	const msgElement = document.querySelector(".attackMsg");
+	console.log(hero instanceof Character);
 
-	msgElement.classList.remove("hidden");
-	let attackMsg = "";
+	try {
+		const msgElement = document.querySelector(".attackMsg");
 
-	//ataque herói
-	attackMsg = hero.attack(dragon);
-	dragonHpWidth = (dragon.hp * 100) / dragon.maxHp;
-	msgElement.innerHTML = attackMsg;
-	//ataque dragão
-	attackMsg = dragon.attack(hero);
-	attackBtn.classList.add("hidden");
-	dragonHp.innerHTML = dragon.hp.toFixed(1);
-	heroHpWidth = (hero.hp * 100) / hero.maxHp;
-	dragonHp.setAttribute("style", `width: ${dragonHpWidth}%`);
-	setTimeout(() => {
+		let attackMsg = "";
+
+		//ataque herói
+		attackMsg = hero.attack(dragon);
+		msgElement.classList.remove("hidden");
+		dragonHpWidth = (dragon.hp * 100) / dragon.maxHp;
 		msgElement.innerHTML = attackMsg;
-		heroHp.setAttribute("style", `width: ${heroHpWidth}%`);
-		heroHp.innerHTML = hero.hp.toFixed(1);
-		attackBtn.classList.remove("hidden");
-	}, 3000);
-	if (hero.hp <= 0 || dragon.hp <= 0) {
-		endGame();
+		//ataque dragão
+		attackMsg = dragon.attack(hero);
+		attackBtn.classList.add("hidden");
+		dragonHp.innerHTML = dragon.hp.toFixed(1);
+		heroHpWidth = (hero.hp * 100) / hero.maxHp;
+		dragonHp.setAttribute("style", `width: ${dragonHpWidth}%`);
+		setTimeout(() => {
+			msgElement.innerHTML = attackMsg;
+			heroHp.setAttribute("style", `width: ${heroHpWidth}%`);
+			heroHp.innerHTML = hero.hp.toFixed(1);
+			attackBtn.classList.remove("hidden");
+		}, 3000);
+		if (hero.hp <= 0 || dragon.hp <= 0) {
+			endGame();
+		}
+	} catch (e) {
+		console.log(e);
 	}
 }
 

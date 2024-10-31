@@ -8,6 +8,7 @@ class Character {
 	}
 
 	attack(target) {
+		if (!(target instanceof Character)) throw new Error("Alvo inválido");
 		let damage;
 		switch (this.characterClass) {
 			case "guerreiro":
