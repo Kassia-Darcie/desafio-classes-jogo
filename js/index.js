@@ -1,5 +1,5 @@
 let hero;
-const dragon = new Character("Smaug", "Fogo", "dragon");
+const dragon = new Character("Smaug", "Fogo", "dragão");
 const intro = document.querySelector(".intro");
 const gameDiv = document.querySelector(".game");
 const buttons = document.getElementsByClassName("heroBtn");
@@ -7,6 +7,8 @@ const heroHp = document.querySelector(".heroHp");
 const dragonHp = document.querySelector(".dragonHp");
 const attackBtn = document.querySelector(".attackBtn");
 const endGameDiv = document.querySelector(".endGame");
+let heroHpWidth = 100;
+let dragonHpWidth = 100;
 
 for (const element of buttons) {
 	let btnName = element.getAttribute("name");
@@ -47,16 +49,24 @@ function setHero(heroClass) {
 
 function handleAttack() {
 	const msgElement = document.querySelector(".attackMsg");
+
+	msgElement.classList.remove("hidden");
 	let attackMsg = "";
 
+	//ataque herói
 	attackMsg = hero.attack(dragon);
+	dragonHpWidth = (dragon.hp * 100) / dragon.maxHp;
 	msgElement.innerHTML = attackMsg;
+	//ataque dragão
 	attackMsg = dragon.attack(hero);
 	attackBtn.classList.add("hidden");
-	dragonHp.innerHTML = dragon.hp;
+	dragonHp.innerHTML = dragon.hp.toFixed(1);
+	heroHpWidth = (hero.hp * 100) / hero.maxHp;
+	dragonHp.setAttribute("style", `width: ${dragonHpWidth}%`);
 	setTimeout(() => {
 		msgElement.innerHTML = attackMsg;
-		heroHp.innerHTML = hero.hp;
+		heroHp.setAttribute("style", `width: ${heroHpWidth}%`);
+		heroHp.innerHTML = hero.hp.toFixed(1);
 		attackBtn.classList.remove("hidden");
 	}, 3000);
 	if (hero.hp <= 0 || dragon.hp <= 0) {

@@ -4,41 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Hero adventure</title>
 </head>
 
-<body>
-    <h1>Hero adventure</h1>
-    <div class="intro">
-        <p>Então você é o herói escolhido para enfrentar o temível dragão que dominou o castelo, quem é você?</p>
-        <div>
-            <button id="hero1" class="heroBtn" name="warrior">Sou Garrosh, o Guerreiro</button>
-            <button id="hero2" class="heroBtn" name="mage">Sou Gandalf, o Mago</button>
-            <button id="hero3" class="heroBtn" name="monk">Sou Poo, o Monge</button>
-            <button id="hero4" class="heroBtn" name="ninja">Sou Naruto, o Ninja</button>
-        </div>
-    </div>
-    <div class="game hidden">
-        <div class="charWrapper">
-            <div class="hero">
-                <p class="heroName"></p>
-                <p><strong>HP: </strong><span class="heroHp"></span></p>
+<body class="bg-light bg-gradient">
+    <h1 class="">Hero adventure</h1>
+    <div class="container">
+        <div class="intro">
+            <div class="dialogBox blueBox">
+                <p class="dialogText">Então você é o herói escolhido para enfrentar o temível dragão que dominou o
+                    castelo,
+                    quem é
+                    você?</p>
             </div>
-            <div class="dragon">
+            <div class="btnGroup d-grid gap-1">
+                <button id="hero1" class="btn heroBtn" name="warrior">Sou Garrosh, o Guerreiro</button>
+                <button id="hero2" class="btn heroBtn" name="mage">Sou Gandalf, o Mago</button>
+                <button id="hero3" class="btn heroBtn" name="monk">Sou Poo, o Monge</button>
+                <button id="hero4" class="btn heroBtn" name="ninja">Sou Naruto, o Ninja</button>
+            </div>
+        </div>
+        <div class="game hidden">
+            <div class="characterBox dragon blueBox">
                 <p class="dragonName"></p>
-                <p><strong>HP: </strong><span class="dragonHp"></span></p>
+                <div>
+                    <span>HP </span>
+                    <div class="progress" role="progressbar">
+                        <div class="progress-bar bg-success dragonHp" style="width: 100%"></div>
+                    </div>
+                </div>
             </div>
+            <div class="attackMsg dialogBox blueBox hidden"></div>
+            <div class="heroContainer">
+                <div class="characterBox hero blueBox">
+                    <p class="heroName"></p>
+                    <div>
+                        <span>HP </span>
+                        <div class="progress" role="progressbar">
+                            <div class="progress-bar bg-success heroHp" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="commandBtns">
+                    <button class="attackBtn btn">Atacar</button>
+                </div>
+            </div>
+
+
         </div>
-        <div class="attackMsg"></div>
-        <button class="attackBtn">Atacar</button>
+        <div class="endGame hidden">
+            <h2></h2>
+            <p></p>
+        </div>
     </div>
 
-    <div class="endGame">
-        <h2></h2>
-        <p></p>
-    </div>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/Character.js"></script>
     <script src="js/index.js"></script>
 </body>
